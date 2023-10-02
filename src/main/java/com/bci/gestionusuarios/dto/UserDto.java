@@ -1,5 +1,6 @@
 package com.bci.gestionusuarios.dto;
 
+import com.bci.gestionusuarios.entity.Phone;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +21,6 @@ public class UserDto {
     private String name;
     private String email;
     private String password;
-    private List<PhoneDto> phones;
+    private List<Phone> phones;
 
 }

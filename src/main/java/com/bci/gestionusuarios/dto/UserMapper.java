@@ -14,6 +14,7 @@ public class UserMapper {
                 .lastLogin(LocalDateTime.now())
                 .token(token)
                 .isActive(user.isActive())
+                .phones(user.getPhones())
                 .build();
     }
 
@@ -26,6 +27,7 @@ public class UserMapper {
                 .created(dto.getCreated())
                 .lastLogin(dto.getLastLogin())
                 .isActive(dto.isActive())
+                .phones(dto.getPhones())
                 .build();
     }
 
