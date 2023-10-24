@@ -1,15 +1,17 @@
 package com.bci.gestionusuarios.dto;
 
+import com.bci.gestionusuarios.entity.Phone;
 import com.bci.gestionusuarios.entity.UserEntity;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
 
     public static UserDto toDto(UserEntity user, String token){
         return UserDto.builder()
-                .id(UUID.fromString(user.getId()))
+                .id(user.getId())
                 .created(user.getCreated())
                 .name(user.getName())
                 .email(user.getEmail())
@@ -17,26 +19,43 @@ public class UserMapper {
                 .lastLogin(LocalDateTime.now())
                 .token(token)
                 .isActive(user.isActive())
-                .phones(user.getPhones())
+                .phones(toPhone(user.getPhones()))
                 .build();
+    }
+
+    public static List<Phone> toPhone(List<Phone> phones){
+        List<Phone> newList = new ArrayList<>();
+
+        phones.forEach(phone -> {
+            newList.add(
+                    Phone.builder()
+                            .number(phone.getNumber())
+                            .cityCode(phone.getCityCode())
+                            .countryCode(phone.getCountryCode())
+                            .build()
+            );
+
+        });
+
+        return newList;
     }
 
     public static UserEntity toEntity(UserDto dto){
         return UserEntity.builder()
-                .id(String.valueOf(dto.getId()))
+                .id(dto.getId())
                 .name(dto.getName())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .created(dto.getCreated())
                 .lastLogin(dto.getLastLogin())
                 .isActive(dto.isActive())
-                .phones(dto.getPhones())
+                .phones(toPhone(dto.getPhones()))
                 .build();
     }
 
     public static ResponseDto toResponse(UserEntity userDto, String token){
         return ResponseDto.builder()
-                .id(UUID.fromString(userDto.getId()))
+                .id(userDto.getId())
                 .created(userDto.getCreated())
                 .lastLogin(userDto.getLastLogin())
                 .token(token)

@@ -1,7 +1,7 @@
 package com.bci.gestionusuarios.service.impl;
 
-import com.bci.gestionusuarios.entity.Phone;
 import com.bci.gestionusuarios.entity.UserEntity;
+import com.bci.gestionusuarios.exception.InvalidPasswordException;
 import com.bci.gestionusuarios.exception.UserAlreadyExistException;
 import com.bci.gestionusuarios.exception.UserNotFoundException;
 import com.bci.gestionusuarios.repository.UserRepository;
@@ -18,10 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -45,7 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService, Authent
 
     @Override
     public UserEntity getUserById(UUID id) {
-        UserEntity user = userRepository.findById(id.toString())
+        UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User", "id", id.toString()));
 
         user.setLastLogin(LocalDateTime.now());
@@ -56,18 +53,17 @@ public class UserServiceImpl implements UserService, UserDetailsService, Authent
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findById((username)).get();
+        UserEntity user = userRepository.findById((UUID.fromString(username)))
+                .orElseThrow(() -> new UserNotFoundException("User", "id", username));
         return new org.springframework.security.core.userdetails.User(username, user.getPassword(), new ArrayList<>());
     }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
-        UserEntity user = userRepository.findById(authentication.getPrincipal().toString()).get();
-        // MATCHEAR CONTRASEÑAS
+        UserEntity user = userRepository.findById((UUID) authentication.getPrincipal())
+                .orElseThrow(() -> new UserNotFoundException("User", "id", authentication.getPrincipal().toString()));
         if(!passwordEncoder.matches(authentication.getCredentials().toString(), user.getPassword())){
-            //TIRAR 401 excepción
-            return null;
+            throw new InvalidPasswordException("Password", authentication.getCredentials().toString());
         }else{
             return authentication;
         }

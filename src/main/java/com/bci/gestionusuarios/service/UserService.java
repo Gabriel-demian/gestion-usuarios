@@ -2,7 +2,6 @@ package com.bci.gestionusuarios.service;
 
 import com.bci.gestionusuarios.entity.UserEntity;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public interface UserService {

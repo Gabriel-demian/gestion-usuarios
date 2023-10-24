@@ -41,6 +41,16 @@ public class CustomExceptionHandler{
         return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<ErrorResponseDto> handleInvalidPasswordException(InvalidPasswordException exception){
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+                LocalDateTime.now(),
+                HttpStatus.UNAUTHORIZED.value(),
+                exception.getMessage()
+        );
+        return new ResponseEntity<>(errorResponseDto, HttpStatus.UNAUTHORIZED);
+    }
+
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponseDto> handleUserNotFoundException(UserNotFoundException exception){
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(

@@ -29,7 +29,6 @@ public class UsersMock {
     public static UserDto createUser() {
 
         return UserDto.builder()
-                .id(UUID.randomUUID())
                 .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
                 .isActive(true)
                 .name("User1")
@@ -42,7 +41,6 @@ public class UsersMock {
     public static Optional<UserDto> createOptionalUser() {
 
         return Optional.of(UserDto.builder()
-                .id(UUID.randomUUID())
                 .created(LocalDateTime.now())
                 .lastLogin(LocalDateTime.now())
                 .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
@@ -57,7 +55,7 @@ public class UsersMock {
     public static UserEntity createUserEntity() {
 
         return UserEntity.builder()
-                .id(String.valueOf(UUID.randomUUID()))
+                .id(UUID.randomUUID())
                 .isActive(true)
                 .name("User1")
                 .email("user@email.com")
@@ -69,7 +67,7 @@ public class UsersMock {
     public static Optional<UserEntity> createOptionalUserEntity() {
 
         return  Optional.of(UserEntity.builder()
-                .id(String.valueOf(UUID.randomUUID()))
+                .id(UUID.randomUUID())
                 .created(LocalDateTime.now())
                 .lastLogin(LocalDateTime.now())
                 .isActive(true)

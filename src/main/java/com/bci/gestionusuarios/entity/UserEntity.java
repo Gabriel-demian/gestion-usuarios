@@ -2,11 +2,13 @@ package com.bci.gestionusuarios.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -16,7 +18,10 @@ import javax.persistence.*;
 @AllArgsConstructor @NoArgsConstructor
 public class UserEntity {
     @Id
-    private String id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
+    private UUID id;
     private String name;
     private String email;
     private String password;
