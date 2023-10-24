@@ -90,12 +90,12 @@ Sigue estos pasos para generar un ejecutable y ejecutar el servicio Java Spring 
     "phones": [
         {
             "number": 123456789,
-            "cityCode": 0,
+            "cityCode": 123,
             "countryCode": "+1"
         },
         {
             "number": 987654321,
-            "cityCode": 0,
+            "cityCode": 456,
             "countryCode": "+1"
         }
     ],
