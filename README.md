@@ -24,8 +24,6 @@ Sigue estos pasos para generar un ejecutable y ejecutar el servicio Java Spring 
 
 ## Postman Collection
 
-- https://api.postman.com/collections/8263715-e56ac53a-9af5-408c-8774-e8865d7ca22f?access_key=PMAT-01HDHBQBWW2FARM5A1DXRQ5JFC
-
 ### Sign Up
 
 - **Endpoint:** `POST - http://localhost:8080/users/sign-up`
