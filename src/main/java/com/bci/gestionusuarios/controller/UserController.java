@@ -6,7 +6,6 @@ import com.bci.gestionusuarios.dto.UserMapper;
 import com.bci.gestionusuarios.entity.UserEntity;
 import com.bci.gestionusuarios.exception.InvalidEmailFormatException;
 import com.bci.gestionusuarios.exception.InvalidPasswordFormatException;
-import com.bci.gestionusuarios.exception.UserNotFoundException;
 import com.bci.gestionusuarios.service.UserService;
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl;
 import com.bci.gestionusuarios.util.Validation;
@@ -14,7 +13,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController

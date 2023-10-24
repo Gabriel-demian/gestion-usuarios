@@ -42,13 +42,12 @@ public class UserMapper {
 
     public static UserEntity toEntity(UserDto dto){
         return UserEntity.builder()
-                .id(dto.getId())
                 .name(dto.getName())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
-                .created(dto.getCreated())
+                .created(LocalDateTime.now())
                 .lastLogin(dto.getLastLogin())
-                .isActive(dto.isActive())
+                .isActive(true)
                 .phones(toPhone(dto.getPhones()))
                 .build();
     }

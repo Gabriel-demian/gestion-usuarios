@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService, UserDetailsService, Authent
     @Override
     public UserEntity createUser(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setLastLogin(LocalDateTime.now());
         return saveUser(user);
     }
 
