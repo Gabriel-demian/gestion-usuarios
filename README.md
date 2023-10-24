@@ -32,7 +32,6 @@ Sigue estos pasos para generar un ejecutable y ejecutar el servicio Java Spring 
 
 ```json
 {
-  "id": "c195bbf0-4801-4f9f-bcec-545a174e519c",
   "created": "2023-10-02T14:30:00",
   "lastLogin": "2023-10-02T14:45:00",
   "token": "",
@@ -43,12 +42,12 @@ Sigue estos pasos para generar un ejecutable y ejecutar el servicio Java Spring 
   "phones": [
     {
       "number": "123456789",
-      "areaCode": "123",
+      "citycode": "123",
       "countryCode": "+1"
     },
     {
       "number": "987654321",
-      "areaCode": "456",
+      "citycode": "456",
       "countryCode": "+1"
     }
   ]
