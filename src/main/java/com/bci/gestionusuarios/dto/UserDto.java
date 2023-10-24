@@ -1,8 +1,10 @@
 package com.bci.gestionusuarios.dto;
 
 import com.bci.gestionusuarios.entity.Phone;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,8 +18,6 @@ public class UserDto {
     private LocalDateTime lastLogin;
     private String token;
     private boolean isActive;
-
-
     private String name;
     private String email;
     private String password;

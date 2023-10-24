@@ -25,7 +25,7 @@ public class CustomExceptionHandler{
     public ResponseEntity<ErrorResponseDto> handleInvalidEmailFormatException(InvalidEmailFormatException exception){
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.BAD_REQUEST.value(),
                 exception.getMessage()
         );
         return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
@@ -35,7 +35,7 @@ public class CustomExceptionHandler{
     public ResponseEntity<ErrorResponseDto> handleInvalidPasswordFormatException(InvalidPasswordFormatException exception){
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.BAD_REQUEST.value(),
                 exception.getMessage()
         );
         return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
@@ -43,6 +43,16 @@ public class CustomExceptionHandler{
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponseDto> handleUserNotFoundException(UserNotFoundException exception){
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+                LocalDateTime.now(),
+                HttpStatus.NOT_FOUND.value(),
+                exception.getMessage()
+        );
+        return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public ResponseEntity<ErrorResponseDto> handleUserAlreadyExistException(UserAlreadyExistException exception){
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 LocalDateTime.now(),
                 HttpStatus.NOT_FOUND.value(),

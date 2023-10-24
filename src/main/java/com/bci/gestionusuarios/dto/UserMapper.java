@@ -11,6 +11,9 @@ public class UserMapper {
         return UserDto.builder()
                 .id(UUID.fromString(user.getId()))
                 .created(user.getCreated())
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
                 .lastLogin(LocalDateTime.now())
                 .token(token)
                 .isActive(user.isActive())
@@ -28,6 +31,16 @@ public class UserMapper {
                 .lastLogin(dto.getLastLogin())
                 .isActive(dto.isActive())
                 .phones(dto.getPhones())
+                .build();
+    }
+
+    public static ResponseDto toResponse(UserEntity userDto, String token){
+        return ResponseDto.builder()
+                .id(UUID.fromString(userDto.getId()))
+                .created(userDto.getCreated())
+                .lastLogin(userDto.getLastLogin())
+                .token(token)
+                .isActive(userDto.isActive())
                 .build();
     }
 

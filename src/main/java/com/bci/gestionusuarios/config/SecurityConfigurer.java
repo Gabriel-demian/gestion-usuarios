@@ -14,15 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 @AllArgsConstructor
 public class SecurityConfigurer {
 
-	private AuthFilter authFilter;
+
+    private AuthFilter authFilter;
 
 	@Bean
 	public SecurityFilterChain configSecurity(HttpSecurity http) throws Exception {
 		http.csrf().disable(); // why??
-
-		// enable request to sign-up endpoint without being authenticated
 		http.authorizeHttpRequests().requestMatchers(unauthorizedEndpointsMatcher).permitAll()
-				// for the rest of the requests authentication must be provided
 				.anyRequest().authenticated();
 		http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
