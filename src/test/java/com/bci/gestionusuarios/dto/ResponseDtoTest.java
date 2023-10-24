@@ -1,13 +1,17 @@
 package com.bci.gestionusuarios.dto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("ResponseDto Tests")
 public class ResponseDtoTest {
 
     @Test
+    @DisplayName("Test de creacion de ResponseDto")
     public void testResponseDto() {
         ResponseDto responseDtoEmpty = ResponseDto.builder().build();
 
