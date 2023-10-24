@@ -32,26 +32,23 @@ Sigue estos pasos para generar un ejecutable y ejecutar el servicio Java Spring 
 
 ```json
 {
-  "created": "2023-10-02T14:30:00",
-  "lastLogin": "2023-10-02T14:45:00",
-  "token": "",
-  "isActive": true,
   "name": "Ejemplo Usuario",
-  "email": "usuario@example.com",
+  "email": "usuario51@example.com",
   "password": "Aa123456789",
   "phones": [
     {
       "number": "123456789",
       "cityCode": "123",
-      "countryCode": "+1"
+      "countryCode": "+3"
     },
     {
       "number": "987654321",
       "cityCode": "456",
-      "countryCode": "+1"
+      "countryCode": "+12"
     }
   ]
 }
+
 ```
 
 **Response Body:**
